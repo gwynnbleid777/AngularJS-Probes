@@ -1,0 +1,78 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/mystyles.css" />
+</head>
+<body>
+
+<style>
+.odd { background-color: #fafafa;}
+.even { background-color: silver}
+</style>
+<div ng-controller="phoneController">
+<table class="table">
+<thead>
+<tr>
+<th>Id</th>
+<th>Модель</th>
+<th>Цена</th>
+</tr>
+</thead>
+<tr ng-repeat="phone in phones" ng-class="$odd ? 'odd' : 'even'">
+<td>{{$index + 1}}</td>
+<td>{{phone.name}}</td>
+<td>{{phone.price}}</td>
+</tr>
+</table>
+<div ng-controller="phoneController">
+	<ul>
+		<li ng-repeat="company in phones">
+			<p>{{company.name}}</p>
+			<ul ng-repeat="model in company.models">
+				<b>{{model.name}}</b>
+				<p>Цена: {{model.price}} $</p>
+			</ul>
+		</li>
+	</ul>
+	<p>Количество элементов : <span ng-bind = "phones.length"></span></p>
+	<p>First element : <span ng-bind = "phones[0].name"></span></p>
+</div>
+
+<div ng-controller = "phoneController">
+<input type ="text" ng-model ="phones[0].name"/>
+<p ng-bind ="phones[0].name"></p>
+</div>
+
+<p> {{1+2}} </p>
+<p ng-non-bindable>{{1+2}}</p>
+
+<div ng-controller="phoneController">
+<p ng-bind-template="{{phones[0].models[0].name}}: {{phones[0].models[0].price}} $" </p>
+</div>
+
+<div ng-controller="phoneController">
+<ng-include src="'partialView.html'"></ng-include>
+</div>
+
+<div ng-controller="phoneController3">
+<ng-include src="'phonesList.html'"></ng-include>
+
+
+	<div ng-repeat="button in modes">
+		<label>
+			<input type="radio" ng-model="data.mode" value="{{button.value}}" name="modes"/>
+			{{button.label}}
+		</label>
+	</div>
+	<div ng-include="setFile()"></div>
+</div>
+
+
+<script src="js/lib/angular.min.js"></script>
+<script type="text/javascript">
+var myApp = angular.module('myApp', []);
+</script>
+<script src="js/controllers/phonesController2.js"></script>
+</body>
+</html>

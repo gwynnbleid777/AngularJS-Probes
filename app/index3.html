@@ -1,0 +1,18 @@
+<!doctype html>
+<html ng-app ="myApp">
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<p>Модуль: {{ moduleName }}</p>
+<p>Сообщение: {{ moduleMessage }}</p>
+<script src="js/lib/angular.min.js"></script>
+<script type="text/javascript">
+angular.module('myApp', [])
+	.run(function($rootScope) {
+	$rootScope.moduleName = "myApp";
+	$rootScope.moduleMessage = "COCK! SUCK! My balls are so hugeeee!";	
+});
+</script>
+</body>
+</html>
